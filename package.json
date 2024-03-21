@@ -19,7 +19,7 @@
   "author": "",
   "license": "MIT",
   "lint-staged": {
-    "./src/**/*": [
+    "./src/**/*.ts": [
       "eslint --fix",
       "prettier --write"
     ]

@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "predev": "dotenv-checker --schema .env.example --env .env",
-    "dev": "nodemon src/index.ts",
-    "start": "node dist/index.js",
+    "dev": "docker-compose up -d && nodemon src/index.ts",
+    "start": "docker-compose up -d && node dist/index.js",
     "build": "npx tsc",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write src",

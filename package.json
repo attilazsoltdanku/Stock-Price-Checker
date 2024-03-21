@@ -11,7 +11,9 @@
     "typecheck": "tsc --noEmit",
     "format": "prettier --write src",
     "lint": "eslint --fix src",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "migration:generate": "drizzle-kit generate:pg",
+    "migration:run": "tsx ./src/db/scripts/migrate.ts"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +30,7 @@
     "express": "^4.19.1",
     "pg": "^8.11.3",
     "postgres": "^3.4.3",
+    "tsx": "^4.7.1",
     "zod": "^3.22.4"
   },
   "devDependencies": {
@@ -37,6 +40,7 @@
     "@typescript-eslint/eslint-plugin": "^7.3.1",
     "@typescript-eslint/parser": "^7.3.1",
     "dotenv-checker": "^1.1.5",
+    "drizzle-kit": "^0.20.14",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "husky": "^8.0.0",

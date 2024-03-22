@@ -1,19 +1,22 @@
 import { serial, timestamp, pgTable, decimal, bigint } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
-import { stock } from "./stock.schema";
+import { stockTable } from "./stock.schema";
 
-export const stockPrice = pgTable("stockPrice", {
+export const stockPriceTable = pgTable("stockPrice", {
   id: serial("id").primaryKey(),
   stockId: bigint("stock_id", { mode: "number" })
-    .references(() => stock.id, {
+    .references(() => stockTable.id, {
       onDelete: "cascade"
     })
     .notNull(),
-  currentPrice: decimal("current_price"),
-  createdAt: timestamp("created_at"),
-  updatedAt: timestamp("updated_at")
+  currentPrice: decimal("current_price", { precision: 7, scale: 2 }).$type<number>().notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull()
 });
 
-export const stockPriceRelations = relations(stockPrice, ({ one }) => ({
-  stock: one(stock, { fields: [stockPrice.stockId], references: [stock.id] })
+export const stockPriceRelations = relations(stockPriceTable, ({ one }) => ({
+  stock: one(stockTable, { fields: [stockPriceTable.stockId], references: [stockTable.id] })
 }));
+
+export type StockPriceInsert = typeof stockPriceTable.$inferInsert;
+export type StockPriceSelect = typeof stockPriceTable.$inferSelect;

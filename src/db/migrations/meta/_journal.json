@@ -8,6 +8,20 @@
       "when": 1711054459977,
       "tag": "0000_add_stock_tables",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1711056114542,
+      "tag": "0001_add_not_null_to_stock_columns",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1711094395763,
+      "tag": "0002_fix_stock_current_price_type",
+      "breakpoints": true
     }
   ]
 }

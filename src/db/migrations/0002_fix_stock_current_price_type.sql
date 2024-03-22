@@ -1,0 +1,1 @@
+ALTER TABLE "stockPrice" ALTER COLUMN "current_price" SET DATA TYPE numeric(7, 2);

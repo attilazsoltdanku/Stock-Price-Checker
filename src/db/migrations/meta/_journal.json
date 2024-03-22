@@ -22,6 +22,13 @@
       "when": 1711094395763,
       "tag": "0002_fix_stock_current_price_type",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1711098938604,
+      "tag": "0003_add_last_updated_time_to_stock_price_table",
+      "breakpoints": true
     }
   ]
 }

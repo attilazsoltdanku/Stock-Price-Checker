@@ -1,10 +1,14 @@
 import { desc, eq } from "drizzle-orm";
 import { db } from "../client";
+import type { StockPriceInsert } from "../schema";
 import { stockPriceTable, stockTable, type StockInsert } from "../schema";
 
-export const saveStock = async (data: StockInsert) => {
+export const saveStock = async (stock: StockInsert, stockPrice: Omit<StockPriceInsert, "stockId">) => {
   try {
-    return await db.insert(stockTable).values(data).returning();
+    await db.transaction(async tx => {
+      const [savedStock] = await tx.insert(stockTable).values(stock).returning();
+      await tx.insert(stockPriceTable).values({ ...stockPrice, stockId: savedStock.id });
+    });
   } catch (error) {
     console.error("Error saving stock:", error);
   }

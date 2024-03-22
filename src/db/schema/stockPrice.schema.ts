@@ -9,7 +9,7 @@ export const stockPriceTable = pgTable("stockPrice", {
       onDelete: "cascade"
     })
     .notNull(),
-  currentPrice: decimal("current_price").notNull(),
+  currentPrice: decimal("current_price", { precision: 7, scale: 2 }).$type<number>().notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull()
 });

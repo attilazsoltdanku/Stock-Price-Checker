@@ -26,7 +26,7 @@ export const getCurrentStockPrice: RequestHandler = async (req, res) => {
         currentPrice: c,
         lastUpdatedTime: getDateFromTimestamp(t),
         movingAverage:
-          "We don't have enough data to calculate moving average. Please make a request for this endpoint to start fetching data."
+          "We don't have enough data to calculate moving average. Please send a request for this endpoint to start fetching data. PUT http://localhost:3000/stock/:symbol For example: http://localhost:3000/stock/AAPL"
       });
     }
 

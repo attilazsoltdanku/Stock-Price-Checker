@@ -17,6 +17,11 @@ export const getCurrentStockPrice: RequestHandler = async (req, res) => {
     if (!stock || !stock.stockPrices.length) {
       const result = await fetchFinnhub(`/quote?symbol=${symbol}`, { method: "GET" });
       const { c, t } = StockPriceSchema.parse(result);
+
+      if (c === 0 && t === 0) {
+        return res.status(404).send("Stock not found");
+      }
+
       return res.json({
         currentPrice: c,
         lastUpdatedTime: getDateFromTimestamp(t),

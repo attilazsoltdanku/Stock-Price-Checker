@@ -8,6 +8,13 @@
       "when": 1711054459977,
       "tag": "0000_add_stock_tables",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1711056114542,
+      "tag": "0001_add_not_null_to_stock_columns",
+      "breakpoints": true
     }
   ]
 }

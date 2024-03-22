@@ -10,6 +10,7 @@ export const stockPriceTable = pgTable("stockPrice", {
     })
     .notNull(),
   currentPrice: decimal("current_price", { precision: 7, scale: 2 }).$type<number>().notNull(),
+  lastUpdatedTime: timestamp("last_updated_time"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull()
 });
